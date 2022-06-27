@@ -4,8 +4,14 @@ import Notification from './components/Notification'
 import noteService from './services/notes'
 
 const App = () => {
-  const [notes, setNotes] = useState([]) 
-  const [newNote, setNewNote] = useState('')
+  const [notes, setNotes] = useState([])
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
+  const [foundation, setFoundation] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [password, setPassword] = useState('')
   const [showAll, setShowAll] = useState(true)
   const [errorMessage, setErrorMessage] = useState(null)
 
@@ -20,14 +26,13 @@ const App = () => {
   const addNote = (event) => {
     event.preventDefault()
     const newObject = {
-      content: newNote,
-      firstName: newNote,
-      lastName: newNote,
-      email: newNote,
-      userName: newNote,
-      foundationName: newNote,
-      phoneNumber: newNote,
-      password: newNote,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      username: username,
+      foundationName: foundation,
+      phoneNumber: phoneNumber,
+      password: password,
       date: new Date().toISOString(),
       vendor: Math.random() > 0.5,
       id: notes.length + 1,
@@ -36,7 +41,13 @@ const App = () => {
       .create(newObject)
       .then(returnedNote => {
         setNotes(notes.concat(returnedNote))
-        setNewNote('')
+        setFirstName('')
+        setLastName('')
+        setEmail('')
+        setUsername('')
+        setFoundation('')
+        setPhoneNumber('')
+        setPassword('')
       })
   }
 
@@ -51,7 +62,7 @@ const App = () => {
       })
       .catch(error => {
         setErrorMessage(
-          `Note '${note.content}' was already removed from server`
+          `Note '${note.username}' was already removed from server`
         )
         setTimeout(() => {
           setErrorMessage(null)
@@ -59,10 +70,38 @@ const App = () => {
       })
   }
 
-  const handleNoteChange = (event) => {
-    //...newNote,
+  /*const handleNoteChange = (event) => {
     setNewNote(event.target.value)
+  }*/
+
+  const handleFirstName = (event) => {
+    setFirstName(event.target.value)
   }
+
+  const handleLastName = (event) => {
+    setLastName(event.target.value)
+  }
+
+  const handleEmail = (event) => {
+    setEmail(event.target.value)
+  }
+
+  const handleUsername = (event) => {
+    setUsername(event.target.value)
+  }
+
+  const handleFoundation = (event) => {
+    setFoundation(event.target.value)
+  }
+
+  const handlePhoneNumber = (event) => {
+    setPhoneNumber(event.target.value)
+  }
+
+  const handlePassword = (event) => {
+    setPassword(event.target.value)
+  }
+
 
   const notesToShow = showAll
     ? notes
@@ -89,38 +128,38 @@ const App = () => {
       <form onSubmit={addNote}>
         <br/>
         <input type="text" id="firstName" placeholder="First name"
-          value={newNote}
-          onChange={handleNoteChange}
+          value={firstName}
+          onChange={handleFirstName}
         />
         <br/>
         <input type="text" id="lastName" placeholder="Last name"
-          value={newNote}
-          onChange={handleNoteChange}
+          value={lastName}
+          onChange={handleLastName}
         />
         <br/>
         <input type="text" id="email" placeholder="Email"
-          value={newNote}
-          onChange={handleNoteChange}
+          value={email}
+          onChange={handleEmail}
         />
         <br/>
-        <input type="text" id="userName" placeholder="Username"
-          value={newNote}
-          onChange={handleNoteChange}
+        <input type="text" id="username" placeholder="Username"
+          value={username}
+          onChange={handleUsername}
         />
         <br/>
-        <input type="text" id="foundationName" placeholder="Organization"
-          value={newNote}
-          onChange={handleNoteChange}
+        <input type="text" id="foundation" placeholder="Organization"
+          value={foundation}
+          onChange={handleFoundation}
         />
         <br/>
         <input type="text" id="phoneNumber" placeholder="Phone Number"
-          value={newNote}
-          onChange={handleNoteChange}
+          value={phoneNumber}
+          onChange={handlePhoneNumber}
         />
         <br/>
         <input type="text" id="password" placeholder="Password"
-          value={newNote}
-          onChange={handleNoteChange}
+          value={password}
+          onChange={handlePassword}
         />
         <br/>
         <button type="submit">Create account</button>
