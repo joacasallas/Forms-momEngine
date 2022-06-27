@@ -3,7 +3,7 @@ import Note from './components/Note'
 import Notification from './components/Notification'
 import noteService from './services/notes'
 
-const App = () => {
+const AppRegister = () => {
   const [notes, setNotes] = useState([])
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -168,4 +168,4 @@ const App = () => {
   )
 }
 
-export default App 
+export default AppRegister
