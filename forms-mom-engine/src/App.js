@@ -29,7 +29,7 @@ const App = () => {
       phoneNumber: newNote,
       password: newNote,
       date: new Date().toISOString(),
-      important: Math.random() > 0.5,
+      vendor: Math.random() > 0.5,
       id: notes.length + 1,
     }  
     noteService
@@ -40,9 +40,9 @@ const App = () => {
       })
   }
 
-  const toggleImportanceOf = (id) => {
+  const toggleProfileOf = (id) => {
     const note = notes.find(n => n.id === id)
-    const changedNote = { ...note, important: !note.important }
+    const changedNote = { ...note, vendor: !note.vendor }
   
     noteService
       .update(id, changedNote)
@@ -60,12 +60,13 @@ const App = () => {
   }
 
   const handleNoteChange = (event) => {
+    //...newNote,
     setNewNote(event.target.value)
   }
 
   const notesToShow = showAll
     ? notes
-    : notes.filter(note => note.important)
+    : notes.filter(note => note.vendor)
 
   return (
     <div>
@@ -73,7 +74,7 @@ const App = () => {
       <Notification message={errorMessage} />
       <div>
         <button onClick={() => setShowAll(!showAll)}>
-          show {showAll ? 'important' : 'all' }
+          show {showAll ? 'vendor' : 'all' }
         </button>
       </div>      
       <ul>
@@ -81,11 +82,12 @@ const App = () => {
           <Note
             key={i}
             note={note} 
-            toggleImportance={() => toggleImportanceOf(note.id)}
+            toggleProfile={() => toggleProfileOf(note.id)}
           />
         )}
       </ul>
       <form onSubmit={addNote}>
+        <br/>
         <input type="text" id="firstName" placeholder="First name"
           value={newNote}
           onChange={handleNoteChange}
