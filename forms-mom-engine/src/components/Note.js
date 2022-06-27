@@ -1,20 +1,16 @@
 import React from 'react'
 
-const Note = ({ note, toggleImportance }) => {
-  const label = note.important
-    ? 'make not important' : 'make important'
-
+const Note = ({note}) => {
   return (
     <li className='note'>
-      First name: {note.firstName}
-      Last name: {note.lastName}
-      Email: {note.email}
-      Organization: {note.userName}
-      Phone number: {note.userName}
-      Password: {note.userName}
-      Id: {note.userName}
-      Date: {note.date}
-      <button onClick={toggleImportance}>{label}</button>
+      content: {note.content}
+      firstName: {note.firstName}
+      lastName: {note.lastName}
+      email: {note.email}
+      organization: {note.userName}
+      phoneNumber: {note.userName}
+      password: {note.userName}
+      id: {note.userName}
     </li>
   )
 }

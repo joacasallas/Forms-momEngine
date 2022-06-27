@@ -19,21 +19,21 @@ const App = () => {
 
   const addNote = (event) => {
     event.preventDefault()
-    const noteObject = {
+    const newObject = {
       content: newNote,
-      firstName: newNote.firstName,
-      lastName: newNote.lastName,
-      email: newNote.email,
-      userName: newNote.userName,
-      foundationName: newNote.foundationsName,
-      phoneNumber: newNote.phoneNumber,
-      password: newNote.password,
+      firstName: newNote,
+      lastName: newNote,
+      email: newNote,
+      userName: newNote,
+      foundationName: newNote,
+      phoneNumber: newNote,
+      password: newNote,
       date: new Date().toISOString(),
       important: Math.random() > 0.5,
       id: notes.length + 1,
     }  
     noteService
-      .create(noteObject)
+      .create(newObject)
       .then(returnedNote => {
         setNotes(notes.concat(returnedNote))
         setNewNote('')
@@ -87,37 +87,37 @@ const App = () => {
       </ul>
       <form onSubmit={addNote}>
         <input type="text" id="firstName" placeholder="First name"
-          value={newNote.firstName}
+          value={newNote}
           onChange={handleNoteChange}
         />
         <br/>
         <input type="text" id="lastName" placeholder="Last name"
-          value={newNote.lastName}
+          value={newNote}
           onChange={handleNoteChange}
         />
         <br/>
         <input type="text" id="email" placeholder="Email"
-          value={newNote.email}
+          value={newNote}
           onChange={handleNoteChange}
         />
         <br/>
         <input type="text" id="userName" placeholder="Username"
-          value={newNote.userName}
+          value={newNote}
           onChange={handleNoteChange}
         />
         <br/>
         <input type="text" id="foundationName" placeholder="Organization"
-          value={newNote.foundationsName}
+          value={newNote}
           onChange={handleNoteChange}
         />
         <br/>
         <input type="text" id="phoneNumber" placeholder="Phone Number"
-          value={newNote.phoneNumber}
+          value={newNote}
           onChange={handleNoteChange}
         />
         <br/>
         <input type="text" id="password" placeholder="Password"
-          value={newNote.password}
+          value={newNote}
           onChange={handleNoteChange}
         />
         <br/>
